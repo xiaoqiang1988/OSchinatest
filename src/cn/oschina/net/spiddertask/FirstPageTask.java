@@ -42,7 +42,8 @@ public class FirstPageTask extends AsyncTask<String, Integer, List<HashMap<Strin
 	protected void onPreExecute() {
 		// TODO Auto-generated method stub
 		super.onPreExecute();
-        pdialog = ProgressDialog.show(mContext, "系统提示", "正在请求....");
+        pdialog = ProgressDialog.show(mContext, "第一层数据爬取", "正在请求....");
+        pdialog.setCancelable(false);
 
 	}
 	
@@ -84,7 +85,7 @@ public class FirstPageTask extends AsyncTask<String, Integer, List<HashMap<Strin
 		// TODO Auto-generated method stub
 		super.onProgressUpdate(pageNo);
 	
-		 pdialog.setMessage("正在请求第"+pageNo[0]+"页");
+		 pdialog.setMessage("正在请求小区列表第"+pageNo[0]+"页");
 	}
 	
 	@Override
