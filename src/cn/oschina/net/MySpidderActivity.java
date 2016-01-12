@@ -1,13 +1,15 @@
 package cn.oschina.net;
 
-import cn.oschina.net.spiddertask.FirstPageTask;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import cn.oschina.net.spiddertask.FirstPageTask;
 
 public class MySpidderActivity extends Activity {
 
@@ -43,8 +45,8 @@ public class MySpidderActivity extends Activity {
 				}else {
 					startPage = Integer.valueOf(et_pageStart.getText().toString());
 					endPage = Integer.valueOf(et_pageEnd.getText().toString());
-					if (startPage>endPage) {
-						Toast.makeText(MySpidderActivity.this, "起始页必须小于等于终止页", Toast.LENGTH_LONG).show();
+					if (startPage>endPage||startPage<=0) {
+						Toast.makeText(MySpidderActivity.this, "起始页必须小于等于终止页且要大于零", Toast.LENGTH_LONG).show();
 						return;
 					}
 					FirstPageTask firstPageTask = new FirstPageTask(MySpidderActivity.this,cityName,startPage,endPage);
@@ -54,6 +56,20 @@ public class MySpidderActivity extends Activity {
 			}
 		});
 		
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+			DialogUtil.showDialog(MySpidderActivity.this,"确定要退出系统?", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					finish();
+				}
+			});
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 }

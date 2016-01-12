@@ -74,7 +74,12 @@ public class ExcelWriteTask extends AsyncTask<String, String, String> {
 
 	private void WriteExcel(String sheetName){  
         try {  
-        	File file = new File("/mnt/sdcard/"+sheetName+".xls");
+        	String dirPath = "/mnt/sdcard/∞≤æ”øÕ≈¿≥Ê";
+        	File dirFile = new File(dirPath);
+        	if (!dirFile.exists()) {
+				dirFile.mkdirs();
+			}
+        	File file = new File(dirPath+"/"+sheetName+".xls");
         	if (!file.exists()) {
 				file.createNewFile();
 			}

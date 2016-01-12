@@ -51,7 +51,9 @@ public class SecondPageTask extends AsyncTask<String, Community, List<Community>
 		pdialog.setTitle("正在获取小区数据...");
         pdialog.setMessage("正在请求....");
         pdialog.setMax(mList.size());
+        pdialog.setCancelable(false);
         pdialog.show();
+        
 
 	}
 	
