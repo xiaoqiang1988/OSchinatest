@@ -32,7 +32,7 @@ public class SecondPageTask extends AsyncTask<String, Community, List<Community>
 	private String fileName;
 	private int currentCount=0;
 //	private int pageNo = 1;
-
+ 
 	private List<HashMap<String, Object>> mList;
 	
 	public SecondPageTask(Context mContext,List<HashMap<String, Object>> list,String fileName) {
